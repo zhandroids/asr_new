@@ -76,31 +76,32 @@ namespace ASR_NEW {
 
     }
 
-    //% block="asr_logic %vocabulary"
-    //% vocabulary.fieldEditor="gridpicker" vocabulary.fieldOptions.columns=3
-    //% blockId = "asr_logic"
-    export function asr_logic(vocabulary: vocabularyList): boolean {
+    //% block="asr_logic %index"
+    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=4
+    //% blockId = asr_logic
+    //% weight=80 
+    export function asr_logic(index: vocabularyList): boolean {
         const readData = serial.readBuffer(1).toArray(NumberFormat.UInt8BE);
         if (1 == readData[0]) {
-            return vocabulary == vocabularyList.VOICE_OPEN;
+            return index == vocabularyList.VOICE_OPEN;
         } else if (2 == readData[0]) {
-            return vocabulary == vocabularyList.VOICE_CLOSE;
+            return index == vocabularyList.VOICE_CLOSE;
         } else if (3 == readData[0]) {
-            return vocabulary == vocabularyList.VOICE_OPEN_LIGHT;
+            return index == vocabularyList.VOICE_OPEN_LIGHT;
         } else if (4 == readData[0]) {
-            return vocabulary == vocabularyList.VOICE_CLOSE_LIGHT;
+            return index == vocabularyList.VOICE_CLOSE_LIGHT;
         } else if (5 == readData[0]) {
-            return vocabulary == vocabularyList.VOICE_BRIGHTER;
+            return index == vocabularyList.VOICE_BRIGHTER;
         } else if (6 == readData[0]) {
-            return vocabulary == vocabularyList.VOICE_DARK;
+            return index == vocabularyList.VOICE_DARK;
         } else if (7 == readData[0]) {
-            return vocabulary == vocabularyList.VOICE_SWITCH_COLOR;
+            return index == vocabularyList.VOICE_SWITCH_COLOR;
         } else if (8 == readData[0]) {
-            return vocabulary == vocabularyList.VOICE_START;
+            return index == vocabularyList.VOICE_START;
         } else if (9 == readData[0]) {
-            return vocabulary == vocabularyList.VOICE_STOP;
+            return index == vocabularyList.VOICE_STOP;
         } else if (10 == readData[0]) {
-            return vocabulary == vocabularyList.VOICE_SWITCH_MODE;
+            return index == vocabularyList.VOICE_SWITCH_MODE;
         }
         return false
     }
